@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8; width=device-width, initial-scale = 1" name="viewport" />
+        <title></title>
+        <style>
+            #cont{
+                position: absolute;
+                bottom: 20px;
+                border-radius: 3px;
+                width: 97%;
+                height: 10px;
+                background-image: linear-gradient(to right, white, blue);
+                box-shadow: 2px 2px 8px lightblue, -2px -2px 8px lightblue, 1px 1px 8px lightblue, -1px;
+            }
+            
+            #left{
+                position: absolute;
+                width: 100px;
+                top: 0px;
+                bottom: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(173, 217, 230, 0.2);
+                font-size: 3rem;
+                opacity: 0.01;
+            }
+            
+            #right{
+                position: absolute;
+                width: 100px;
+                top: 0px;
+                bottom: 0px;
+                right: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(173, 217, 230, 0.2);
+                font-size: 3rem;
+                opacity: 0.01;
+            }
+            
+            #right:active, #left:active{
+                opacity: 0.05;
+            }
+            
+            #subject{
+                position: absolute;
+                width: 50px;
+                height: 5px;
+                bottom: 50px;
+                background-color: green;
+            }
+        </style>
+        
+        <style>
+            .circle{
+                top: 0px;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                background-color: red;
+            }
+            
+        
+            
+        </style>
+        
+    </head>
+    <body>
+        <div id="cont"></div>
+        <div id="left"><</div>
+        <div id="right">></div>
+        <div id="subject"></div>
+    </body>
+    
+    <script>
+        let left = document.getElementById('left');
+        let right = document.getElementById('right');
+        let subject = document.getElementById('subject');
+        let i = 0;
+        
+        left.onclick = function(){
+            i -= 10;
+            subject.style.left =  `${i}px`;
+        }
+        
+        right.onclick = function(){
+           let m =  document.getElementById('x');
+            m.style.backgroundColor = 'blue';
+            i += 10;
+            subject.style.left = `${i}`;
+        }
+        
+        let leftMargin;
+        //console.log(leftMargin);
+        
+        let drop = () => {
+            leftMargin =  Math.floor(Math.random() * 101);
+            let now = new Date();
+            let s = now.getSeconds();
+            s = s * 10;
+            let element = document.createElement('div');
+            element.id = 'x';
+            element.className = 'circle';
+            element.style.left = `${leftMargin}%`;
+            element.style.transition = 'top 5s linear';
+            element.style.top = `${s}%`;
+            document.body.appendChild(element);
+        };
+        setInterval(drop, 1000);
+        drop();
+        
+        
+        let a = document.getElementById('cont');
+        
+        let date = () => {
+            let now = new Date();
+            let s = now.getSeconds();
+            s = s * 1.67;
+            a.style.width = `${s}%`;
+        };
+        
+        setInterval(date);
+        date;
+    </script>
+    
+</html>

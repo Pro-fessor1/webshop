@@ -1,0 +1,509 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" http-equiv="content-type" content="text/html; charset=utf-8; width=width-width, initial-scale=1.0" />
+
+    <title>Seezi</title>
+    
+    <style>
+    body{
+        margin-top: 250px;
+        background-color: aliceblue;
+    }
+        #container{
+            max-width: 360px;
+            width: 96%;
+            height: 200px;
+            background-image: url('/storage/emulated/0/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images/IMG-20240710-WA0000.jpg');
+            background-position: right;
+            background-repeat: no-repeat;
+            overflow: ;
+            opacity: 1;
+            position: absolute;
+            top: 30px;
+        }
+        #img{
+            width: 130px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            position: relative;
+            left: 100px;
+            top: -25px;
+            border: 2px solid aliceblue;
+        }
+        
+        .main{
+            margin-top: 0px;
+            display: flex;
+            width: 88%;
+            padding: 10px 18px;
+            justify-content: space-between;
+            top: ;
+            background-color: ;
+        }
+        
+        
+        .icon-img{
+            border-radius: 50%;
+            position: relative;
+            top: 25px;
+            width: 100px;
+            height: 100px;
+            background-color: ;
+        }
+        
+        #header{
+            position: relative;
+            overflow: hidden;
+            border: 1px solid grey;
+            border-radius: 6px;
+            padding: 0px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        #menubtn{
+            background-color: aliceblue;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .header-txt{
+            
+            padding: 0px 2px;
+            background-color: ;
+            font-size: 18px;
+            margin-left: 7px;
+            font-family: roboto;
+        }
+        
+        #slider{
+            position: absolute;
+            width: 300px;
+            height: 30px;
+            left: 42px;
+            background-color: aliceblue;
+        }
+        
+        @keyframes slider{
+            100%{
+                width: 0px;
+                display: none;
+            }
+        }
+        
+        #html{
+            font-weight: ;
+            color: blue;
+            border-bottom: 2px solid blue;
+        }
+        
+        .text{
+            position: relative;
+            left: 10px;
+            padding-left: 25px;
+            border-left: 2px solid black;
+        }
+        
+        .txt-1{
+            transition: opacity 2s;
+            font-family: roboto;
+            font-weight: bold;
+            color: blue;
+        }
+        .txt-2{
+            position: relative;
+            font-family: Times New Roman;
+            animation: slide 2s linear;
+            line-height: 25px;
+        }
+        
+        @keyframes slide{
+            from{
+                left: 300px;
+                opacity: 0;
+            }
+            to{
+                left: 10px;
+                opacity: 1;
+            }
+
+        
+        
+        
+    </style>
+    
+    <style>
+    #close{
+        border: 1px solid red;
+        padding: 2px 6px;
+        position: absolute;
+        display: inline;
+        border-radius: 50%;
+        font-family: arial;
+        font-weight: bold;
+        color: red;
+        font-size: 20px;
+        z-index: 100;
+        top: 140px;
+        right: 5px;
+        display: none;
+    }
+    
+        .a{
+            z-index: 1;
+            width: 110px;
+            height: 143px;
+            background-color: ;
+            position: absolute;
+            animation: slide-2 2s linear;
+        }
+        
+        @keyframes slide-2{
+            from{
+                height: 143px;
+                background-color: aliceblue;
+            }
+            to{
+                height: 0px;
+                background-color: aliceblue;
+            }
+        }
+        
+        .txt-22{
+            color: green;
+            position: relative;
+            font-family: Times New Roman;
+            animation: slidex 2s linear;
+        }
+        
+        @keyframes slidex{
+            from{
+                left: 300px;
+                opacity: 0;
+            }
+            to{
+                left: 10px;
+                opacity: 1;
+            }
+            
+           
+    </style>
+    
+    <style>
+        .aa{
+            z-index: 1;
+            width: 110px;
+            height: 143px;
+            background-color: ;
+            position: absolute;
+            animation: slide-22 2s linear;
+        }
+        
+        @keyframes slide-22{
+            from{
+                height: 143px;
+                background-color: white;
+            }
+            to{
+                height: 0px;
+                background-color: white;
+            }
+        }
+        
+    </style>
+    
+    <style>
+        #about{
+            backdrop-filter: blur(1px);
+            color: white;
+            position: relative;
+            margin: 0px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        #about > h3{
+            margin-bottom: 0px;
+        }
+        #about > p{
+            margin: 0px;
+        }
+        .lists{
+            animation: lists 1s;
+        }
+        @keyframes lists {
+            0%{
+                font-size: 5px;
+                opacity: 0;
+                margin-left: 100px;
+        }
+        100%{
+            rotate: 360deg;
+            opacity: 1;
+            
+        }
+        }
+        
+        .li{
+            border-bottom: 2px solid lightgrey;
+            font-family: Times New Roman;
+            padding: 10px 0px;
+            font-weight: bold;
+        }
+        .area{
+            display: flex;
+        }
+        .area > img{
+            width: 50px;
+            height: 50px;
+        }
+        
+        h4{
+            padding-top: 10px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+    </style>
+    
+    <style>
+        #projects{
+            background-image: linear-gradient(to top left, lightblue, white);
+            padding: 0px 5px;
+            border-radius: 6px;
+            padding-bottom: 10px;
+        }
+        .prImg{
+            width: 50px;
+            height: 50px;
+        }
+        
+        .project{
+            box-shadow: 2px 2px 8px #9999;
+            display: flex;
+            border: 1px solid lightgrey;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+        
+        .project > a{
+            display: flex;
+            height: 60px;
+            text-decoration-line: none;
+            color: black;
+            align-items: center;
+            padding: 5px 8px;
+        }
+        
+        .project > a >img{
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        #areas{
+            background-image: linear-gradient(to top right, lightblue, rgba(255,  265, 0, 0.5));
+            padding: 5px 8px;
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px #9999;
+        }
+        
+        .area{
+            margin-top: 5px;
+        }
+        
+        .area > img{
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 1px solid lightgrey;
+        }
+    </style>
+    
+    <style>
+        #contacts{
+            background-color: lightblue;
+            padding: 5px 8px;
+            margin-top: 10px;
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px #9999;
+        }
+        
+        #hcontact{
+            font-family: roboto;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+        
+        .contact{
+            display: block;
+        }
+        
+        .contact > img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 10px 0px 5px 0px;
+        }
+        .contact > a{
+            color: black;
+            text-decoration-line: none;
+            display: block;
+            margin: 0px;
+        }
+        
+        .contacts > p{
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="img-cont">
+            <img src="/storage/emulated/0/Bossa/Sezi (1).jpg" id='img'>
+            <div id="about">
+            <h3 id="myname">TURYAHABWE SEEZI</h3>
+            <p id="title">Web designer</p>
+            </div>
+            <div id="close">X</div>
+        </div>
+       
+    </div>
+    
+    <div id="header">
+        <img src="/storage/emulated/0/Download/images (4).png" id="menubtn"></img>
+        <div id="slider"></div>
+        <p class="header-txt" id="html">HTML</p>
+        <p class="header-txt" id="css">CSS</p>
+        <p class="header-txt" id="js">JavaScript</p>
+        <p class="header-txt" id="py">Python</p>
+    </div>
+    
+    <div class="main">
+        <div class='a' id='a'></div>
+        <img id="icon-img" class="icon-img" src="/storage/emulated/0/Download/images.png">
+        <div class="text" id='text'>
+            <p class="txt-1" id="txt-1">
+                ~HTML
+            </p>
+            <p class="txt-2" id="txt-2">
+                Crafting semantic, accessible, fully responsive html 5 markup and creating a full foundation for exceptional web experience.
+            </p>
+        </div>
+    </div>
+    
+    <h2 id="exp">Expertise in</h2>
+    <ul id="ul">
+        <li class="li" id="li1">Structuring content with HTML elements and attributes</li>
+        <li class='li' id="li2">Building responsive layouts with css grid and flex</li>
+        <li class='li' id="li3">Optimizing for search engines with SEO friendly markup</li>
+    </ul>
+    <h4 id="h4">**Other areas of experience**</h4>
+    <div id="areas">
+        <div class="area">
+            <img class= src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="mysqli">
+            <p>MySQLi</p>
+        </div>
+        <div class="area">
+            <img src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="ps">
+            <p>Adobe photoshop</p>
+        </div>
+        <div class="area">
+            <img src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="ai">
+            <p>Adobe illustrator</p>
+        </div>
+        <div class="area">
+            <img src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="wordlogo">
+            <p>Ms Word</p>
+        </div>
+        <div class="area">
+            <img src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="excel">
+            <p>Ms Excel</p>
+        </div>
+        <div class="area">
+            <img src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="pp">
+            <p>Ms PowerPoint</p>
+        </div>
+    </div>
+    
+    <div id='projects'>
+        <h4>~Projekts Korner~</h4>
+        <div class="project">
+            <a href="">
+                <img class="prImg" src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="rGame">
+                Random Number Game</a>
+        </div>
+        
+        <div class="project">
+            <a href="">
+                <img class="prImg" src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="cal">
+                Calculator</a>
+        </div>
+        
+        <div class="project">
+            <a href="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg">
+                <img class="prImg" src="" alt="rQuote">
+                Random Quote</a>
+        </div>
+        
+        <div class="project">
+            <a href="">
+                <img class="prImg" src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="poem">
+                The Poet</a>
+        </div>
+        
+        <div class="project">
+            <a href="">
+                <img class="prImg" src="/storage/emulated/0/Documents/pixelLab/20240722_150421.jpg" alt="clock">
+                Clock</a>
+        </div>
+    </div>
+    
+    <div id="contacts">
+        <p id="hcontact">
+            Contact Sheet
+        </p>
+        <div class="contact">
+            <img src="" alt="tel">
+            <a href="">
+                <p>+256 743 314438</p>
+            </a>
+            <a href="">
+                <p>+256 766 902123</p>
+            </a>
+        </div>
+        <div class="contact">
+            <img src="" alt="whatsapp">
+            <a href="">
+                +256 743 314438
+            </a>
+        </div>
+        <div class="contact">
+            <img src="" alt="location">
+            <p>Mbarara city</p>
+            <p>Andrews Kakiika</p>
+            <p>Uganda</p>
+        </div>
+        <div class="contact">
+                <img src="" alt="gmail">
+            <a href=""> webshopinitiative@gmail.com
+            </a>
+        </div>
+    </div>
+    <!--
+    <button id='btn'>click me</button>
+    -->
+    
+    <hr>
+    <footer>
+        <small>
+            @webshopinitiative +256 766 902123
+        </small>
+        <small>
+            all rights reserved.
+        </small>
+    </footer>
+</body>
+
+<script src="./myjs.js"></script>
+</html>

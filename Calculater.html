@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <style>
+        body{
+            text-align:center;
+        }
+        #myContainer{
+            margin-top: 30px;
+            border-radius:6px;
+            border:2px solid lightgrey;
+            padding: 30px 35px 15px 15px;
+            background-color: rgba(0,0,0, 0.1);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+        
+        #myh1{
+            font-family: roboto;
+            text-align: left;
+            text-shadow: 2px 2px 3px rgba(211, 211, 255, 1), -2px -2px 3px rgba(221, 211, 255, 1);
+        }
+        
+        #myh2{
+            font-weight: bold;
+            font-family: roboto;
+            font-size: 25px;
+            text-align: right;
+            background-color: lightgrey;
+            padding: 5px 10px;
+            width: 100%;
+            border-radius: 6px;
+            border: 2px solid black;
+            overflow: hidden;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25) inset;
+        }
+        #c{
+            display: flex;
+            margin-left: 175px;
+            border: none;
+            border-radius: 6px;
+            font-family: roboto;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 5px 10px;
+            margin-top: 0px;
+        }
+        
+        #c:hover{
+            color: white;
+            background-color: rgba(0,0,0,1);
+            #c:active{
+                transition: all 0.5s;
+                background-color: rgba(0,0,255,0.8);
+            }
+        }
+        .figures > p{
+            border: 1px solid lightgrey;
+            background-color: ;
+            width: 50px;
+            border-radius: 6px;
+            font-family: roboto;
+            font-weight: bold;
+            font-size: 25px;
+            margin-top: 0px;
+            padding: 5px 10px;
+        }
+        #Num_0{
+            margin-left: ;
+        }
+        
+        
+        .figures{
+           display: grid;
+           grid-template-columns: 100px 100px 100px;
+           grid-column-gap: 10px;
+           grid-row-gap: 0px;
+           margin-top: 10px;
+        }
+        
+        .nums:hover{
+            color: white;
+            box-shadow: 2px 2px 8px #999;
+            background-color: lightgrey;
+        }
+        .nums:active{
+            transition: all 0.3s;
+            background-color: rgba(211,211,211, 0.7);
+        }
+        
+        .operands{
+            display: inline-block;
+            justify-content: space-between;
+        }
+        
+        .operands > button{
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 40px;
+            width: 50px;
+            background-color: rgba(0,0,0,0.05);
+            border: none;
+            border-radius: 6px;
+        }
+        
+        .operands > button:active{
+            transition: all 0.3s;
+            background-color: orange;
+            box-shadow: 2px 2px 8px lightgrey;
+        }
+        
+        #myBtn{
+            background-color: black;
+            color: white;
+        }
+        
+        #bspace{
+            width: 53px;
+            top: 43px;
+            left: 127px;
+            apspect-ratio: 1/1;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="myContainer">
+    <h1 id="myh1">Calculator</h1>
+    <input id='myh2' readonly="">
+    <img src="/storage/emulated/0/Download/backspace_icon_152694.png" alt="bspace" id="bspace">
+    <button id="c">Clear</button>
+    <div id="figures" class='figures'>
+        <p class="nums" id="Num_1">1</p>
+        <p class="nums" id="Num_2">2</p>
+        <p class="nums" id="Num_3">3</p>
+        <p class="nums" id="Num_4">4</p>
+        <p class="nums" id="Num_5">5</p>
+        <p class="nums" id="Num_6">6</p>
+        <p class="nums" id="Num_7">7</p>
+        <p class="nums" id="Num_8">8</p>
+        <p class="nums" id="Num_9">9</p>
+        <p class="nums" id="point">.</p>
+        <p class="nums" id="Num_0">0</p>
+        <p class="nums" id="modulus">%</p>
+        
+
+    </div>
+    <hr>
+    <div class="operands">
+        <button id="add">+</button>
+        <button id="subtract">-</button>
+        <button id="multiply">*</button>
+        <button id="divide">/</button>
+        <button id="myBtn">=</button>
+    </div>
+  
+    </div>
+
+</body>
+    <script>
+        //let equality = document.getElementById('');
+        
+        
+        let add = document.getElementById('add');
+        let subtract = document.getElementById('subtract');
+        let divide = document.getElementById('divide');
+        let multiply = document.getElementById('multiply');
+        let myBtn = document.getElementById('myBtn');
+        let Num_1 = document.getElementById('Num_1');
+        let Num_2 = document.getElementById('Num_2');
+        let Num_3 = document.getElementById('Num_3');
+        let Num_4 = document.getElementById('Num_4');
+        let Num_5 = document.getElementById('Num_5');
+        let Num_6 = document.getElementById('Num_6');
+        let Num_7 = document.getElementById('Num_7');
+        let Num_8 = document.getElementById('Num_8');
+        let Num_9 = document.getElementById('Num_9');
+        let Num_0 = document.getElementById('Num_0');
+        let myh2 = document.getElementById('myh2');
+        let point = document.getElementById('point');
+        let modulus = document.getElementById('modulus');
+        const figures = document.getElementById('figures');
+        let answer = 0;
+        let initial = "";
+        let figure;
+        
+        modulus.onclick = function(){
+            myh2.value += modulus.innerText;
+        }
+        point.onclick = function(){
+            myh2.value += point.textContent;
+        }
+        divide.onclick = function(){
+            myh2.html += divide.textContent;
+        }
+        Num_1.onclick = function(){
+            initial += Num_1.textContent;
+            myh2.value += Num_1.textContent;
+            //console.log(typeof(initial));
+            //initial = Number(initial);
+            //console.log(initial);
+            //console.log(typeof(initial));
+        }
+        
+        Num_2.onclick = function(){
+            initial += Num_2.textContent;
+            myh2.value += Num_2.textContent
+        }
+        
+        Num_3.onclick = function(){
+            initial += Num_3.textContent;
+            myh2.value += Num_3.textContent
+        }
+        
+        Num_4.onclick = function(){
+            initial += Num_4.textContent;
+            myh2.value += Num_4.textContent
+        }
+        
+        Num_5.onclick = function(){
+            initial += Num_5.textContent;
+            myh2.value += Num_5.textContent
+        }
+        
+        Num_6.onclick = function(){
+            initial += Num_6.textContent;
+            myh2.value += Num_6.textContent
+        }
+        
+        Num_7.onclick = function(){
+            initial += Num_7.textContent;
+            myh2.value += Num_7.textContent
+        }
+        
+        Num_8.onclick = function(){
+            initial += Num_8.textContent;
+            myh2.value += Num_8.textContent
+        }
+        
+        Num_9.onclick = function(){
+            initial += Num_9.textContent;
+            myh2.value += Num_9.textContent
+        }
+
+Num_0.onclick = function(){
+            initial += Num_0.textContent;
+            myh2.value += Num_0.textContent
+        }
+
+
+
+
+        let bspace = document.getElementById('bspace');
+        bspace.onclick = function(){
+            lastChar = myh2.value.slice(-1);
+            myh2.value = myh2.value.slice(0, -1);
+        }
+
+        
+        add.onclick = function(){
+            myh2.value += add.textContent;
+        initial = 0
+        }
+        subtract.onclick = function(){
+            myh2.value += subtract.textContent;
+        }
+        
+        divide.onclick = function(){
+            myh2.value += divide.textContent;
+        }
+        
+        multiply.onclick = function(){
+            myh2.value += multiply.textContent;
+        }
+        
+        myBtn.onclick = function(){
+            console.log(myh2.value.slice(0, -1));
+            try{
+                myh2.value = eval(myh2.value);
+            }
+            catch(Error){
+            myh2.value =  "error";
+            }
+        }
+        
+        const clear = document.getElementById('c');
+        
+        clear.onclick = function(){
+            myh2.value = "";
+            initial = 0;
+            answer = 0;
+        }
+    </script>
+</html>

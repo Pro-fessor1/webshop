@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <style>
+                .container{
+                    display:flex;
+                    flex-direction:space;
+                    
+                }
+                .sect_1{
+                    background-color:blue;
+                    position:relative;{{
+                }
+            </style>
+        </head>
+      <body>
+      <a
+        href="https://wa.me/+256 743314438"
+        class="whatsapp_float"
+        target="_blank"
+        rel="noopener noreferrer"
+      >click me
+        <i class="fa fa-whatsapp whatsapp-icon"></i>
+      </a>
+      
+      
+      <div class="container">
+          <div class="sect_1">SETH</div>
+          <div class="sect_2">BOSSA</div>
+          <div class="sect_3">developer</div>
+      </div>
+      
+      <p id="myP"></p>
+      <h1 id="myH1">Welcome</h1> <br>
+      <input id="mytxt"> <br> <br>
+      <button id="mybtn">submit</button>
+      
+      
+      
+      <script type="text/javascript" charset="utf-8">
+                let age = 20;
+          let greetings = "Hello";
+          document.getElementById('myP').innerHTML = `${greetings}, your age is ${age} years.`;
+          //window.alert("hello")
+let user;
+document.getElementById('mybtn').onclick = function(){
+    user = document.getElementById('mytxt').value;
+    document.getElementById('myH1').textContent = `Hello ${user}.`
+}
+      </script>
+      </body>
+</html>

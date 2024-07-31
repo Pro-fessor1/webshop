@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta name="viewport" http-equiv="content-type" content="text/html; charset=utf-8: width=device-width, initial scale = 1" />
+    
+        <title>js anime</title>
+        
+        <style>
+            #box{
+                width: 100px;
+                height: 100px;
+                background-color: yellow;
+                background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) 25%, rgba(255, 0, 0, 0.1) 50%, rgba(255, 0, 0, 0.9) 75%;
+                color: none;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="box"></div>
+    </body>
+    
+    <script>
+        box = document.getElementById("box");
+        box.animate(animation);
+        
+        const animation = function(){
+            duration: 1000,
+            keyframes: [
+                {
+                    width: '50px'
+                },
+                keyframe 
+                {
+                    width: '50px'
+                }
+                ]
+        }
+    </script>
+</html>

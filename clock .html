@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+
+    
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        body{
+            background-image: url('/storage/emulated/0/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images/IMG-20240710-WA0000.jpg');
+            background-position: right;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        #txt{
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(5px);
+        font-size: 2.5rem;
+        font-family: monospace;
+        border-radius: 6px;
+        }
+        
+        #hand{
+            position: relative;
+            display: flex;
+            justify-content: space-evenly;
+            width: 2px;
+            height: 140px;
+            background-color: ;
+            left: 3px;
+            top: ;
+            z-index: 3;
+        }
+        
+        #a{
+            height: 70px;
+            width: 2px;
+            background-color: white;
+        }
+        #b{
+            width: 2px;
+            height: 70px;
+            background-color: blue;
+        }
+        
+        #hand2{
+            position: relative;
+            display: flex;
+            justify-content: space-evenly;
+            width: 2px;
+            height: 110px;
+            background-color: ;
+            left: ;
+            top: ;
+        }
+        #aa{
+            width: 2px;
+            height: 55px;
+            background-color: red;
+        }
+        #bb{
+            background-color: white;
+            width: 2px;
+            height: 55px;
+        }
+        
+        #hand3{
+            position: relative;
+            top: ;
+            display: flex;
+            justify-content: space-evenly;
+            width: 2px;
+            height: 100px;
+            background-color: ;
+            left: -1.2px;
+        }
+        #aaa{
+            width: 2px;
+            height: 50px;
+            background-color: black;
+        }
+        #bbb{
+            background-color: white;
+            width: 2px;
+            height: 50px;
+        }
+        #a, #b, #aa, #bb, #aaa, #bbb{
+            margin: 0px;
+        }
+        
+        </style>
+        
+        <style>
+            #container{
+                border: 10px solid black;
+                z-index: -50;
+                position: absolute;
+                top: 30vh;
+                left: 70px;
+                width: 200px;
+                height: 200px;
+                background-color: lightblue;
+                overflow: ;
+                display: flex;
+                justify-content: center;
+                border-radius: 50%;
+                align-items: center;
+                box-shadow: 2px 2px 8px black inset;
+            }
+            
+            #h12{
+                left: 95px;
+                position: absolute;
+                top: -15px;
+            }
+            #h6{
+                position: absolute;
+                top: 165px;
+                left: 95px;
+            }
+            #h3{
+                position: absolute;
+                top: 73px;
+                left: 185px;
+            }
+            #h9{
+                position: absolute;
+                top: 73px;
+                left: 3px;
+            }
+            
+            #circle{
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 94px;
+                left: 96px;
+                z-index: 5;
+                background-color: blue;
+                border-radius: 50%;
+                box-shadow: 2px 2px 8px black;
+            }
+            
+            #ff{
+                position: absolute;
+                color: white;
+                padding: 2px 5px;
+                top: 40px;
+                box-shadow: 1px 1px 8px black inset;
+                border: 1px solid white;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            
+        </style>
+        </head>
+<body>
+
+<div id="txt"></div>
+
+<div id="container">
+    <p id="ff">Seezi</p>
+    <div id="circle"></div>
+    <p id="h12">12</p>
+    <p id="h6">6</p>
+    <p id="h3">3</p>
+    <p id="h9">9</p>
+<div id="hand">
+    <div id="a"></div>
+    <div id="b"></div>
+</div>
+
+<div id="hand2">
+    <div id="aa"></div>
+    <div id="bb"></div>
+</div>
+<div id="hand3">
+    <div id="aaa"></div>
+    <div id="bbb"></div>
+</div>
+
+</div>
+
+</body>
+
+<script>
+
+
+    text = document.getElementById('txt');
+    function updatetime(){
+        const now = new Date();
+        let hour = now.getHours();
+        let meridiam = hour >= 12 ? "PM" : "AM";
+        hour = hour % 12 || 12;
+        hour = hour.toString().padStart(2, 0);
+        const minute = now.getMinutes().toString().padStart(2,0);
+        const second = now.getSeconds().toString().padStart(2, 0);
+        //console.log(meridiam);
+        //if( hour >= 6){
+           // meridiam = "PM"
+       // }
+       // else{
+           // meridiam = "AM"
+     //   }
+        console.log(meridiam);
+        text.textContent = `${hour}:${minute}:${second} ${meridiam}`;
+        text.style.marginTop = "100px"
+    }
+    
+    setInterval(updatetime, 1000);
+    
+    let running = true;
+    let hand = document.getElementById('hand');
+    let hand2 = document.getElementById('hand2');
+    let hand3 = document.getElementById('hand3');
+    function rotate(){
+        let now = new Date();
+        let second = now.getSeconds();
+        second = second * 6;
+        let minute = now.getMinutes();
+        minute = minute * 6;
+        let hour = now.getHours();
+        hour = hour * 30;
+        hand.style.rotate = `${second}deg`;
+        hand2.style.rotate = `${minute}deg`;
+        hand3.style.rotate = `${hour}deg`;
+    }
+    
+    setInterval(rotate, 1000);
+    rotate();
+    </script>
+    
+    </body>

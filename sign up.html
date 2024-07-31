@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0">
+        <style>
+            .buttons{
+                color:white;
+                background-color:skyblue;
+                border-radius:5px;
+                text-align:center;
+                padding:3px 3px;
+                cursor:pointer;
+                transition:;
+                
+            }
+            #myLabel{
+                display:block;
+                font-size:5em;
+                font-family:arial;
+                text-align:center;
+            }
+            #mycontainer{
+                text-align:center;
+            }
+        </style>
+        </head>
+        <body>
+            <label id="myLabel">0</label>
+            <div id="mycontainer">
+            <button class="buttons" id="decreaseBtn">Decrease</button>
+                        <button id="resetBtn" class="buttons">Reset</button>
+                                    <button id="increaseBtn"  class="buttons">Increase</button>
+            </div>
+                                    
+                                    
+                                    
+<script>
+    const decreaseBtn = document.getElementById('decreaseBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const increaseBtn = document.getElementById('increaseBtn');
+    let count = 0;
+    decreaseBtn.onclick = function(){
+        count--;
+        document.getElementById('myLabel').textContent = count
+    };
+    resetBtn.onclick = function(){
+        count = 0;
+        document.getElementById('myLabel').innerHTML = count
+    };
+    increaseBtn.onclick = function(){
+        count++;
+        document.getElementById('myLabel').textContent = count
+    };
+    
+    let names = ["bossa", "seezi", "urban"];
+    console.log(names.length);
+    let i = 0;
+    while(i < names.length){
+        i++;
+        console.log(names[i]);
+        if(i <= names.length){
+            break;
+        }
+    }
+    
+</script>
+        </body>
