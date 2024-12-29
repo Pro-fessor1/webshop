@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyCash</title>
+
+    <style>
+        body {
+            background-color: aliceblue;
+            font-family: helvetica;
+            margin: 0px;
+        }
+
+        #signUpPage {
+            margin: 100px 10px 0px 10px;
+            display: none;
+
+            flex-direction: column;
+            border: none;
+            background-color: lightblue;
+            padding: 0px 0px 10px 10px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+        }
+        #signUpPage > div {
+            margin-top: 5px;
+        }
+        .signUpDetail > input {
+            border: 1px solid blue;
+            border-radius: 3px;
+            background-color: transparent;
+            padding: 3px 5px;
+        }
+        .signUpBtns {
+            display: flex;
+            justify-content: space-around;
+        }
+        .btns {
+            width: 100px;
+            border: 1px solid blue;
+            color: blue;
+            border-radius: 3px;
+            padding: 3px 8px;
+            background-color: transparent;
+            font-weight: 15px;
+        }
+        .btns:hover {
+            background-color: blue;
+            color: white;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);;
+        }
+        #signInPage {
+            color: blue;
+            display: flex;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #signInBtn {
+            width: 80%;
+            color: white;
+            padding: 5px 8px;
+            border: 1px solid blue;
+            border-radius: 5px;
+            background-color: blue;
+            margin-top: 10px;
+            pointer: cursor
+
+        }
+        #signInBtn:hover {
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);;
+            font-weight: bold;
+        }
+        #signInPass {
+            border: 1px solid blue;
+            background-color: transparent;
+            border-radius: 3px;
+            padding: 2px 5px;
+        }
+        #header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 5px;
+            align-items: center;
+        }
+        h3 {
+            color: blue;
+            font-family: Sans-Serif;
+        }
+        #header > #menuContainer > img {
+            width: 30px;
+            height: 30px;
+            border-radius:;
+            padding: 10px;
+        }
+        #menu {
+            display: none;
+            position: absolute;
+            right: 15px;
+            background-color: lightblue;
+            border-radius: 3px;
+            padding: 0px 50px 0px 8px;
+            animation: menu_1 0.5s linear;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+            z-index: 50;
+        }
+
+
+        .menu > p:hover {
+            color: blue;
+            border-bottom: 2px solid blue;
+            text-shadow:;
+            z-index:;
+        }
+        .basicInfo {
+            display: inline-flex;
+            background-color:;
+            align-items: center;
+            margin-left: 3px;
+        }
+        .userImg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            padding: 5px;
+            background-color: lightgrey;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50%;
+        }
+        .userName {
+            display: flex;
+            flex-direction: column;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-left: 5px;
+            background-color:;
+            align-items: center;
+        }
+        .name {
+            margin-bottom: 0px;
+        }
+        .idNumber {
+            margin-top: 0px;
+        }
+        #finContainer {
+            display: none;
+        }
+        .fintxt {
+            color: grey;
+            margin-top: 0px;
+            font-weight: bold;
+        }
+        #headerContainer {
+            display: none;
+        }
+
+        .finInfo {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 5px;
+        }
+        .finInfo > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color:;
+            justify-content: center;
+        }
+        #shiftNo, #daysLeft, #reward {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 0px;
+        }
+        #progressBar {
+            font-weight: bold;
+            font-size: 20px;
+            width: 100%;
+            height: 100px;
+            background-image: linear-gradient(to right, transparent, lightblue);
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+        }
+        #progressCont :not(#progressBar) {
+            display: flex;
+            justify-content: center;
+            margin-top: -60px;
+            z-index: 1;
+        }
+        #percentagePB {
+            color: grey;
+            font-family: arial;
+        }
+
+        .myBtns {
+            margin-top: 110px;
+            padding: 3px 5px;
+
+        }
+        #addShift {
+            color: blue;
+            border: 1px solid blue;
+            border-radius: 3px;
+            background-color: transparent;
+            font-size: 20px;
+            padding: 3px 8px;
+            width: 100%;
+
+        }
+
+        #addShift:hover {
+            color: white;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);;
+            background-color: blue;
+        }
+
+        .shiftDetails {
+            margin-top: 10px;
+        }
+        #newShiftContainer {
+            display: none;
+            margin: 20px 10px 100px 10px;
+            border: none;
+            background-image: linear-gradient(to top right, lightblue, white);
+            padding: 10px 8px 20px 5px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);;
+        }
+        #h4 {
+            color: blue;
+            margin-top: 20px;
+            margin-bottom: 0px;
+            text-align: center;
+        }
+        select, #date, #updateShiftNo {
+            background-color: transparent;
+            border: 1px solid grey;
+            border-radius: 3px;
+        }
+        #newShiftBtns {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        #newShiftBtns > button {
+            border: 1px solid blue;
+            border-radius: 3px;
+            background-color: transparent;
+            padding: 5px 8px;
+            color: blue;
+            width: 100px;
+        }
+        #newShiftBtns > button:hover {
+            border: none;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 8px 20px 0px rgba(0, 0, 0, 0.19);
+        }
+        #developerContainer {
+            padding: 5px 8px;
+            margin: 6px 10px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);;
+            background-image: linear-gradient(to top right, lightblue, white);
+        }
+        #developerContainer > div > p {
+            margin-top: 0px;
+        }
+
+        #queryContainer {
+            display: none;
+            z-index: 51;
+            border-radius: 5px;
+            top: 5px;
+            right: 0px;
+            left: 0px;
+            margin: 0px 5px 0px 5px;
+            background-image: linear-gradient(to top right, lightblue, transparent);
+            position: absolute;
+            padding: 0px 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 8px 20px 0px rgba(0, 0, 0, 0.2);
+        }
+        .queryTitleBar {
+            color: blue;
+            font-weight: bold;
+            display: grid;
+            grid-template-columns: 0.5fr 1.4fr 1.3fr 0.6fr;
+        }
+        .newElements {
+            display: grid;
+            grid-template-columns: 0.5fr 1fr 0.8fr 1fr;
+            column-gap: 5px;
+            row-gap: 0px;
+            margin-top: 0px;
+            font-size: 15px;
+            background-color:;
+            text-align:;
+            font-family: verdana;
+        }
+        #closeQuery {
+            width: 80%;
+            border: 1px solid red;
+            background-color: transparent;
+            color: red;
+            border-radius: 5px;
+            padding: 5px 8px;
+            margin: 5px 0px 15px 30px;
+        }
+        #closeQuery:hover {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+        #resetIdContainer {
+            background-color: aliceblue;
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10%;
+            width: 80%;
+            display: none;
+            flex-direction: column;
+            color: black;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.19), 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        }
+        #resetIdContainer input {
+            border: 1px solid blue;
+            border-radius: 3px;
+            background-color: transparent;
+            padding: 4px 8px;
+            margin: 10px 0px;
+        }
+        #resetIdContainer button {
+            padding: 4px 8px;
+            border: none;
+            border-radius: 3px;
+            background-color: rgba(0, 0, 0, 0.1);
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        #resetIdContainer button:hover {
+            border: 1px solid blue;
+            font-weight: bold;
+            background-color: blue;
+            color: white;
+        }
+        #clearPrompt {
+            color: red;
+            z-index: 52;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            background-color: rgba(0, 0, 0, 1);
+            display: none;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #clearPrompt div > button {
+            border: none;
+            padding: 10px 16px;
+            background-color: aliceblue;
+            border-radius: 3px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #complaintContainer {
+            display: none;
+
+        }
+        #complaintHeader {
+            text-align: center;
+            color: blue;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        #compIcons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 5px 30px 5px;
+        }
+        #supervisors {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+        }
+
+        #compIcons a img {
+            width: 40px;
+            aspect-ratio: 1/1;
+        }
+        #complaintField1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #complaintField1 button {
+            border: none;
+            font-weight: bold;
+            color: grey;
+            padding: 10px 16px;
+            border-radius: 5px;
+            width: 100px;
+            margin-top: 20px;
+            background-color: lightblue;
+            cursor: pointer;
+
+        }
+        #complaintField1 input {
+            border: 1px solid blue;
+            background-color: transparent;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+        #complaintField1 button:hover {
+
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+            color: white;
+            background-color: blue;
+
+        }
+        #complaintField2, #queryTitleBar2, #complaintField3 {
+            display: none;
+        }
+        #complaintField2 > p, #complaintField3 > p {
+            margin: 0px;
+            padding: 0px 0px 0px 5px;
+        }
+        #sos {
+            margin-top: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #sos > p {
+            margin-bottom: 0px;
+            font-size: 12px;
+        }
+        #comp {
+            display: flex;
+            justify-content: space-between;
+        }
+        #comp img {
+            width: 50px;
+            aspect-ratio: 1/1;
+        }
+        #comp > p {
+            font-weight: bold;
+            font-family: aria;
+        }
+        #developerContainer #complaintField3 {
+            display: block;
+        }
+        .close {
+            width: 200px;
+            padding: 5px 8px;
+            border: 1px solid red;
+            border-radius: 3px;
+            background-color: transparent;
+            color: red;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+
+        }
+        .close:hover {
+            color: white;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="signUpPage">
+        <h4>Sign up</h4>
+        <div class="signUpDetail">
+            <label for="name">First name:</label>
+            <input type="text" id="fName">
+        </div>
+        <div class="signUpDetail">
+            <label for="lName">Last name:</label>
+            <input type="text" id="lName">
+        </div>
+        <div class="signUpDetail">
+            <label for="IdNumber">
+                Id Number:
+            </label>
+            <input type="number" id="IdNumber">
+        </div>
+        <div class="signUpDetail"></div>
+        <div class="signUpDetail"></div>
+        <div class="signUpBtns">
+            <button id="saveBtn" class="btns">Save</button>
+            <button class="btns" id="cancelBtn" onclick="">Cancle</button>
+        </div>
+    </div>
+    <div id="signInPage">
+        <h4>Welcome to MyCash</h4>
+        <input type="number" id="signInPass" placeholder="ID Number">
+        <button id="signInBtn">Login</button>
+        <p id="forgotId">
+            Forgot <strong id="viewReset">ID Number</strong> ?
+        </p>
+        <div id="sos">
+            <p>
+                From
+            </p>
+            <div id="comp">
+                <img src="/storage/F427-1173/urban/powerweber/gallery/webshop logo.png" alt="compLogo">
+                <p>
+                    Webshop Initiative
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="resetIdContainer">
+        <p id="resetHeader"></p>
+        <div class="securityQtns">
+            <label id="qtnLabel" for="qtn_1">
+
+            </label>
+            <input type="text" id="verifyInput">
+        </div>
+        <button id="verifyBtn">Verify</button>
+        <button id="back">
+            Back
+        </button>
+    </div>
+    <div id="headerContainer">
+        <div id="header">
+            <h3>
+                MyCash
+            </h3>
+            <div id="menuContainer">
+                <img id="menuBtn" src="/storage/F427-1173/Bossa/images (4).png" alt="" class="">
+                <div id="menu" class="menu">
+                    <p onclick="query()">
+                        Query
+                    </p>
+                    <p onclick="Update()">
+                        Update info
+                    </p>
+                    <p onclick="viewClear()">
+                        Clear data
+                    </p> <!--
+                    <p onclick="contactDev()">
+                        Contact developer
+                    </p> -->
+                    <p onclick="displayComplaint()">
+                        Complaints
+                    </p>
+                    <p onclick="settings()">
+                        Settings
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="basicInfo">
+            <div class="userImg">
+                <p id="initials"></p>
+            </div>
+            <div class="userName">
+                <p class="name" id="name"></p>
+                <p id="idNumber" class="idNumber">
+                    -
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="finContainer">
+        <div class="finInfo">
+            <div class="daysInfo">
+                <p id="daysLeft">
+                    -
+                </p>
+                <p class="fintxt" id="daysLefttxt">
+                    Days
+                </p>
+            </div>
+            <div class="shiftInfo">
+                <p id="shiftNo">
+                    -
+                </p>
+                <p class="fintxt" id="shiftNoTxt">
+                    Shifts
+                </p>
+            </div>
+            <div class="amount">
+                <p id="reward">
+                    -
+                </p>
+                <p class="fintxt">
+                    Reward
+                </p>
+            </div>
+        </div>
+        <div id="progressCont">
+            <div id="progressBar">
+            </div>
+            <p id="percentagePB">
+                -
+            </p>
+        </div>
+        <div class="myBtns">
+            <button id="addShift">New</button>
+
+        </div>
+    </div>
+
+    <div id="newShiftContainer">
+        <h4 id="h4">New shift</h4>
+
+        <div class="shiftDetails" id="updateShiftContainer">
+            <label for="updateShiftNo">
+                Shift No:
+            </label>
+            <input type="number" id="updateShiftNo">
+        </div>
+
+
+        <div class="shiftDetails" id="">
+            <label for="Department">Department:</label>
+            <select name="shiftDepartment" id="shiftDepartment">
+                <option value="Blow" class="myOptions">Blow</option>
+                <option value="Filmatic" class="myOptions">Filmatic</option>
+                <option value="Canteen" class="myOptions">Canteen</option>
+                <option value="Soap plant" class="myOptions">Soap plant</option>
+                <option value="Chemical refinery" class="myOptions">Chemical refinery</option>
+                <option value="Silicate" class="myOptions">Silicate</option>
+                <option value="Shortening" class="myOptions">Shortening</option>
+                <option value="Raw material" class="myOptions">Raw material</option>
+                <option value="Physical refinery" class="myOptions">Physical refinery</option>
+                <option value="Boiler" class="myOptions">Boiler</option>
+                <option value="Store" class="myOptions">Store</option>
+                <option value="Dispatch" class="myOptions">Dispatch</option>
+                <option value="Sanitation" class="myOptions">Sanitation</option>
+                <option value="Caustic" class="myOptions">Caustic</option>
+                <option value="Engeneering" class="myOptions">Engeneering</option>
+                <option value="ABC" class="myOptions">ABC</option>
+            </select>
+        </div>
+        <div class="shiftDetails">
+            <label for="Period">Period:</label>
+            <select name="Period" id="Period">
+                <option value="General" class="myOptions">General</option>
+                <option value="Morning" class="myOptions">Morning</option>
+                <option value="Afternoon" class="myOptions">Afternoon</option>
+                <option value="Night" class="myOptions">Night</option>
+            </select>
+        </div>
+        <div class="shiftDetails">
+            <label for="date">Date:</label>
+            <input type="date" id="date">
+        </div>
+        <div id="newShiftBtns">
+            <button id="submit">Submit</button>
+            <button onclick="cancelSubmit" id="cancelSubmit">Cancle</button>
+        </div>
+    </div>
+
+    <div id="developerContainer">
+        <h5>Contact developer on</h5>
+        <div class="contact">
+            <label for="tel">Tel:</label>
+            <p>
+                0766902123
+            </p>
+        </div>
+        <div class="contact">
+            <label for="whatsApp">WhatsApp:</label>
+            <p>
+                0743314438
+            </p>
+        </div>
+
+
+        <div class="contact">
+            <label for="Email">Email:</label>
+            <p>
+                webshopinitiative@gmail.com
+            </p>
+        </div>
+        <div class="contact"></div>
+    </div>
+
+
+    <div id="queryContainer">
+        <div class="queryTitleBar">
+            <p class="qpara">
+                No.
+            </p>
+            <p class="qpara">
+                Department
+            </p>
+            <p class="qpara">
+                Period
+            </p>
+            <p class="qpara">
+                Date
+            </p>
+        </div>
+        <div id="queryContent">
+
+        </div>
+        <button onclick="closeQuery()" id="closeQuery">
+            Close
+        </button>
+    </div>
+    <div id="clearPrompt">
+        <p>
+            When you click "Delete" you will lose all your data
+        </p>
+        <div>
+            <button onclick="clearStorage()">Delete</button>
+            <button onclick="cancleClear()">Cancle</button>
+        </div>
+    </div>
+
+    <div id="complaintContainer">
+        <p id="complaintHeader">
+            Complaint
+        </p>
+        <div id="complaintField1">
+            <div>
+                <label for="compalaintId">Enter shift No.: </label>
+                <input placeholder="1" id="shiftNum" type="number">
+            </div>
+            <button type="submit" onclick="query_2()">Ok</button>
+        </div>
+        <div class="queryTitleBar" id="queryTitleBar2">
+            <p class="qpara">
+                No.
+            </p>
+            <p class="qpara">
+                Department
+            </p>
+            <p class="qpara">
+                Period
+            </p>
+            <p class="qpara">
+                Date
+            </p>
+        </div>
+
+
+        <div class="newElements" id="queryContent2">
+
+        </div>
+        <div id="complaintField2">
+            <hr>
+            <p>
+                Foward to...
+            </p>
+            <div id="supervisors">
+                <div class="basicInfo" id="Habib">
+                    <p class="userImg">
+                        HP
+                    </p>
+                    <p class="userName">
+                        Habib Doe
+                    </p>
+                </div>
+
+                <div class="basicInfo" id="Wilber">
+                    <p class="userImg">
+                        WK
+                    </p>
+                    <p class="userName">
+                        Wilber Kukundakwe
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="complaintField3" class="complaintField33">
+            <hr>
+            <p>
+                Via...
+            </p>
+            <div id="compIcons">
+                <a href="" id="wa">
+                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/WhatsApp.svg.png" alt="Whatsapp">
+                </a>
+                <a href="" id="gm">
+                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/Gmail_icon_(2020).svg.png" alt="Gmail">
+                </a>
+                <a href="" id="sms">
+                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/download.webp" alt="SMS">
+                </a>
+                <a href="" id="phone">
+                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/phone-504.svg" alt="phone">
+                </a>
+            </div>
+        </div>
+        <button class="close"onclick="closeComplaint()">close</button>
+    </div>
+</body>
+
+<script>
+console.log(localStorage.length)
+    let signUpPage = document.getElementById("signUpPage");
+    let signInPage = document.getElementById("signInPage");
+    let headerContainer = document.getElementById("headerContainer");
+    let finContainer = document.getElementById("finContainer");
+    let newShiftContainer = document.getElementById("newShiftContainer");
+    let developerContainer = document.getElementById("developerContainer");
+    let queryContainer = document.getElementById("queryContainer");
+
+    function signUp() {
+        const localLen = localStorage.length;
+        const cancleBtn = document.getElementById("cancelBtn");
+        const saveBtn = document.getElementById("saveBtn");
+        let backBtn = document.querySelector("#back");
+        signUpPage.style.display = "flex";
+        finContainer.style.display = "none";
+        headerContainer.style.display = "none";
+        let Income = 0;
+        let saved = true;
+        developerContainer.style.display = "none";
+        saveBtn.onclick = function() {
+
+            let resetIdContainer = document.querySelector("#resetIdContainer");
+            resetIdContainer.style.display = "flex";
+            let qtnLabel = document.querySelector("#qtnLabel");
+            let verifyBtn = document.querySelector("#verifyBtn");
+            let resetHeader = document.getElementById("resetHeader");
+            resetHeader.textContent = "Set up a recovery question";
+            backBtn.style.display = "none"
+            verifyBtn.textContent = "Save";
+            let resetValue = document.querySelector("#verifyInput");
+            let qtns = [
+                "What is your favorite meal?",
+                "What is your favorite color?",
+                "What is your mother's name",
+                "What is your nick name?"];
+            let qtn = Math.floor(Math.random() * qtns.length);
+            qtnLabel.innerHTML = qtns[qtn];
+            //let question = qtnLabel.innerHTML;
+            //console.log(typeof(question));
+
+            verifyBtn.onclick = function() {
+                resetIdContainer.style.display = "none";
+                let question = qtns[qtn];
+                console.log(question);
+
+                let fName = document.getElementById("fName").value.toUpperCase().trim();
+                let lName = document.getElementById("lName").value.toUpperCase().trim();
+                let idNumber = document.getElementById("IdNumber").value.trim();
+                console.log(question);
+                const personalInfo = {
+                    "First name": fName,
+                    "Last name": lName,
+                    "Id number": idNumber,
+                    "Question": question,
+                    "Answer": resetValue.value.toUpperCase().trim(),
+                    "Saved": saved,
+                }
+                localStorage.setItem("Income", 0);
+
+                //Below here are place holders set in local storage.
+
+                localStorage.setItem("Other", JSON.stringify({"Storage length": localLen}));
+
+                localStorage.setItem("pHolder 2", "null");
+                localStorage.setItem("Developer info", JSON.stringify(
+                    {
+                        "First name": "TURYAHABWE",
+                        "Last name": "Seezi",
+                        "WhatsApp": "+256743314438",
+                        "Phone": "+256766902123",
+                        "Email": "cruzreighnz@gmail.com",
+                        "Website": "www.Webshop.com"
+                    }
+                ));
+
+                localStorage.setItem("pHolder 3", "null");
+
+                localStorage.setItem("pHolder 4", "null");
+                localStorage.setItem("personalInfo", JSON.stringify(personalInfo));
+                console.log("signed up");
+                signUpPage.style.display = "none";
+                window.location.reload(true);
+                local();
+                signIn();
+            }
+
+        }
+        
+        cancelBtn.onclick = function() {
+            signUpPage.style.display = "none";
+            //signIn();
+            window.location.reload(true);
+        }
+    }
+
+
+    //setTimeout(local, 20000)
+
+    function signIn() {
+        signInPage.style.display = "flex";
+        signUpPage.style.display = "none"
+        let myInfo = localStorage.getItem("personalInfo");
+        myInfo = JSON.parse(myInfo);
+        console.log(myInfo["Id number"]);
+        developerContainer.style.display = "none";
+        function passVer() {
+            let password = document.getElementById("signInPass").value;
+            let userId = myInfo["Id number"];
+            if (password == userId) {
+                signInPage.style.display = "none";
+                headerContainer.style.display = "block";
+                finContainer.style.display = "block";
+                developerContainer.style.display = "block";
+                password = "";
+                console.log(password)
+            } else {
+                alert("Incorrect password")
+            }
+        }
+        let signInBtn = document.getElementById("signInBtn");
+        //alert(pass);
+        signInBtn.onclick = function() {
+            passVer()
+        }
+
+        function clear() {
+            localStorage.clear();
+            setInterval(signUpPage, 1000);
+        }
+    }
+
+    menuBtn.onclick = function() {
+
+        let menuBtn = document.getElementById("menuBtn");
+        let menu = document.getElementById("menu");
+        if (menu.style.display === "none") {
+            menu.style.display = "block";
+            console.log(menu.style.display)
+        } else {
+            menu.style.display = "none";
+            console.log(menu.style.display)
+        }
+    }
+
+
+    function headerInfo() {
+        try {
+            let myInfo = localStorage.getItem("personalInfo");
+            myInfo = JSON.parse(myInfo);
+            let firstName = myInfo["First name"];
+            let lastName = myInfo["Last name"];
+            let name = firstName + " " + lastName;
+            //console.log(fName)
+            let IdNumber = myInfo["Id number"];
+            let initials = firstName[0] + lastName[0];
+            let initialsLogo = document.getElementById("initials");
+            let userId = document.getElementById("idNumber");
+            let userName = document.getElementById("name");
+            userName.textContent = name;
+            userId.textContent = IdNumber;
+            initialsLogo.innerHTML = initials;
+        }
+        catch(err) {
+            console.log(err)
+        }
+        //console.log(name);
+        //console.log(IdNumber)
+    }
+
+    function main() {
+        let personalInfo = localStorage.getItem("personalInfo");
+        personalInfo = JSON.parse(personalInfo);
+        //console.log(personalInfo.Saved);
+        try {
+            if (personalInfo.Saved === true) {
+                signIn();
+                //headerInfo();
+                //console.log("true")
+            } else {
+                signUp();
+            }
+        }
+        catch(err) {
+            signUp();
+            console.log(err);
+
+        }
+        //console.log(localStorage.length)
+        headerInfo();
+        let updateShiftContainer = document.querySelector("#updateShiftContainer");
+
+        let addShift = document.getElementById("addShift");
+        addShift.onclick = function() {
+            updateShiftContainer.style.display = "none";
+            newShiftContainer.style.display = "block";
+            finContainer.style.visibility = "hidden";
+            finContainer.style.position = "absolute";
+            developerContainer.style.display = "none";
+        }
+
+        let saveBtn = document.getElementById("submit");
+        saveBtn.onclick = function() {
+            let shiftDepartment = document.getElementById("shiftDepartment").value;
+            let Period = document.getElementById("Period").value;
+            let date = document.getElementById("date").value.toString();
+            let newInfo = {
+                "Department": shiftDepartment,
+                "Period": Period,
+                "Date": date
+            }
+            localStorage.setItem(localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"] + 1, JSON.stringify(newInfo));
+            newShiftContainer.style.display = "none";
+            Income();
+            alert("Saved successfully!");
+            finContainer.style.position = "relative";
+            finContainer.style.visibility = "visible";
+            developerContainer.style.display = "block"
+        }
+        let cancleSubmit = document.getElementById("cancelSubmit")
+
+        cancleSubmit.onclick = function() {
+            cancleSubmit.style.borderColor = "red";
+            cancleSubmit.style.color = "red";
+            alert("Cancled")
+            newShiftContainer.style.display = "none";
+            finContainer.style.position = "relative";
+            finContainer.style.visibility = "visible";
+            developerContainer.style.display = "block"
+        }
+
+        function getIncome() {
+            let reward = document.querySelector("#reward");
+            let daysLeft = document.querySelector("#daysLeft");
+            let shiftNo = document.querySelector("#shiftNo");
+            let now = new Date().getDate();
+            if (now <= 15) {
+                daysLeft.textContent = 15 - now;
+            } else {
+                daysLeft.textContent = 15 - (now - 15)
+            }
+
+            let percentageBar = document.getElementById("progressBar");
+            let percentagePB = document.getElementById("percentagePB");
+            //console.log(percentagePB.innerHTML)
+            let width = window.innerWidth;
+            let length = 
+    localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+            if ((length / 15) * 100 <= 100) {
+                percentageBar.style.width = (length / 15) * width + "px";
+            } else {
+                percentageBar.style.width = width + "px"
+            }
+            percentagePB.innerHTML = Math.floor((length / 15) * 100) + "%";
+
+            try {
+                reward.textContent = "UGX " + localStorage.getItem("Income");
+                shiftNo.textContent = 
+localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+
+            }
+            catch(err) {
+                alert("No records available");
+            }
+        }
+
+        getIncome()
+    }
+
+
+    function Income() {
+        let daysLeft = document.getElementById("daysLeft");
+        let shiftNo = document.getElementById("shiftNo");
+        let reward = document.getElementById("reward");
+        let department = document.getElementById("shiftDepartment").value;
+        let percentageBar = document.getElementById("progressBar");
+        let percentagePB = document.getElementById("percentagePB");
+        //console.log(percentagePB.innerHTML)
+        let width = window.innerWidth;
+        let length = localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+        if ((length / 15) * 100 <= 100) {
+            percentageBar.style.width = (length / 15) * width + "px";
+        } else {
+            percentageBar.style.width = width + "px"
+        }
+        percentagePB.innerHTML = Math.floor((length / 15) * 100) + "%";
+        //console.log(department);
+        let income = localStorage.getItem("Income");
+        let payments = {
+            "Blow": 9180,
+            "Filmatic": 9180,
+            "Soap plant": 9180,
+            "Canteen": 9980,
+            "Chemical refinery": 9980,
+            "Silicate": 9180,
+            "Caustic": 9180,
+            "Shortening": 9180,
+            "Raw material": 9980,
+            "Physical refinery": 9980,
+            "Boiler": 10840,
+            "Sanitation": 9180,
+            "Engeneering": 11970,
+            "Dispatch": 9180,
+            "ABC": 9180,
+            "Store": 9180
+        }
+        income = Number(income);
+        income += payments[department];
+        localStorage.setItem("Income", income);
+
+        //This is where the shift Number is got
+        function getIncome() {
+            reward.textContent = "UGX " + localStorage.getItem("Income");
+            shiftNo.textContent = localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+            let now = new Date();
+            let day = Number(now.getDate())
+            console.log(day)
+            if (day <= 15) {
+                daysLeft.textContent = 15 - day
+            } else {
+                daysLeft.textContent = 15 - (day - 15)
+            }
+        }
+
+        getIncome();
+    }
+
+    main()
+
+    function clearStorage() {
+        localStorage.clear();
+        window.location.reload(true)
+    }
+
+    function query() {
+        queryContainer.style.display = "block";
+        headerContainer.style.display = "none";
+        finContainer.style.display = "none";
+        developerContainer.style.display = "none";
+        let queryContent = document.querySelector("#queryContent");
+        document.querySelector("#newShiftContainer").style.display = "none";
+        let length = localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+        for (let x = 1; x <= length; x++) {
+            //console.log(x);
+            let particular = localStorage.getItem(x);
+            particular = JSON.parse(particular);
+            //console.log(x);
+            let department = particular["Department"];
+            let period = particular["Period"];
+            let date = particular["Date"];
+            //console.log(department)
+            let newElement_0 = document.createElement("p")
+            let newElement_1 = document.createElement("p");
+            let newElement_2 = document.createElement("p");
+            let newElement_3 = document.createElement("p");
+            newElement_0.textContent = x;
+            newElement_1.textContent = department;
+            newElement_2.textContent = period;
+            newElement_3.textContent = date;
+            queryContent.classList.add("newElements");
+            queryContent.appendChild(newElement_0);
+            queryContent.appendChild(newElement_1);
+            queryContent.appendChild(newElement_2);
+            queryContent.appendChild(newElement_3);
+            console.log(newElement_3.textContent);
+        }
+    }
+    function closeQuery() {
+        let queryContent = document.querySelector("#queryContent");
+        queryContainer.style.display = "none";
+        developerContainer.style.display = "block";
+        headerContainer.style.display = "block";
+        finContainer.style.display = "block";
+        queryContent.innerHTML = "";
+    }
+
+    let viewReset = document.querySelector("#viewReset");
+    viewReset.onclick = function() {
+        let backBtn = document.getElementById("back");
+        let resetIdContainer = document.querySelector("#resetIdContainer");
+        let verifyBtn = document.querySelector("#verifyBtn");
+        //let backBtn = document.querySelector("#back");
+        let resetHeader = document.querySelector("#resetHeader");
+        let verifyInput = document.querySelector("#verifyInput");
+        let personalInfo = localStorage.getItem("personalInfo");
+        personalInfo = JSON.parse(personalInfo);
+        console.log(personalInfo);
+        let qtnLabel = document.querySelector("#qtnLabel");
+        let userAnswer;
+        let storedAnswer = personalInfo.Answer
+        qtnLabel.innerHTML = personalInfo.Question;
+        resetIdContainer.style.display = "flex";
+        resetHeader.innerHTML = "Question";
+        backBtn.onclick = function() {
+            resetIdContainer.style.display = "none"
+        }
+        verifyBtn.onclick = function() {
+            userAnswer = verifyInput.value.toUpperCase().trim();
+            if (userAnswer == personalInfo.Answer) {
+                alert(`Your security code is:  ${personalInfo["Id number"]}`);
+                resetIdContainer.style.display = "none"
+
+            } else {
+                alert("Incorrect!")
+            }
+        }
+    }
+
+    function Update() {
+        let updateShiftContainer = document.querySelector("#updateShiftContainer");
+        let updateShiftNo = document.querySelector("#updateShiftNo");
+        let period = document.querySelector("#Period");
+        let date = document.querySelector("#date");
+        let department = document.querySelector("#shiftDepartment");
+        let h4 = document.querySelector("#h4");
+        let update = document.querySelector("#submit");
+        document.querySelector("#newShiftContainer").style.display = "none";
+        document.querySelector("#updateShiftContainer").style.display = "none"
+        let cancleBtn = document.querySelector("#cancelSubmit");
+        newShiftContainer.style.display = "block";
+        updateShiftContainer.style.display = "block";
+        finContainer.style.display = "none";
+        developerContainer.style.display = "none";
+        h4.innerHTML = "Update shift";
+        //Here length i subtracted 1. Remember to check the live version before updating.
+        let length = localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+        //console.log(length);
+
+        let list = [];
+        update.onclick = function() {
+            var particular;
+            updateShiftNo = updateShiftNo.value.toString().trim();
+            //console.log("No is " + updateShiftNo);
+            date = date.value;
+            department = department.value;
+            period = period.value;
+            let updateShiftCont = {
+                "Department": department,
+                "Period": period,
+                "Date": date
+            }
+            console.log(updateShiftCont);
+            for (let x = 1; x <= length; x++) {
+                console.log(updateShiftNo);
+                particular = localStorage.getItem(x);
+                particular = JSON.parse(particular);
+                list.push(x);
+                console.log(list);
+            }
+            if (updateShiftNo in list) {
+                localStorage.setItem(updateShiftNo, JSON.stringify(updateShiftCont))
+                alert("Updated successfully!");
+
+                finContainer.style.display = "block";
+                developerContainer.style.display = "block";
+                updateShiftContainer.style.display = "none";
+                newShiftContainer.style.display = "none";
+                review();
+            } else {
+                alert("Not found! Please check number correctly.")
+            }
+        }
+
+        cancleBtn.onclick = function() {
+            finContainer.style.display = "block";
+            developerContainer.style.display = "block";
+            updateShiftContainer.style.display = "none";
+            newShiftContainer.style.display = "none";
+        }
+    }
+    /*
+    //console.log(localStorage.key(7))
+    for(let x = 0; x<= localStorage.length - 1; x++){
+        //console.log(x);
+        //console.log(localStorage.key(x))
+        try{
+            let number = localStorage.key(x);
+            number = Number(number);
+            if(!isNaN(number) == false) {
+                //console.log("numbers");
+                console.log(localStorage.key(number))
+            }
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    for (let x = 1; x <= localStorage.length - 7; x++){
+        console.log(localStorage.key(x));
+        console.log(localStorage.getItem(x))
+    }
+    let nums = ["1", "2", "3"];
+    let num = "1";
+    console.log(nums.includes(num))
+    */
+
+
+    function review() {
+
+        let payments = {
+            "Blow": 9180,
+            "Filmatic": 9180,
+            "Soap plant": 9180,
+            "Canteen": 9980,
+            "Chemical refinery": 9980,
+            "Silicate": 9180,
+            "Caustic": 9180,
+            "Shortening": 9180,
+            "Raw material": 9980,
+            "Physical refinery": 9980,
+            "Boiler": 10840,
+            "Sanitation": 9180,
+            "Engeneering": 11970,
+            "Dispatch": 9180,
+            "ABC": 9180,
+            "Store": 9180
+        }
+        let list = [];
+        let map = localStorage.getItem('personalInfo');
+        let income = 0;
+        let dept;
+        //console.log(JSON.parse(map))
+        let localStorageLeng = 
+localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+        for (let i = 1; i <= localStorageLeng; i++) {
+            let x = JSON.parse(localStorage[i])['Department'];
+            list.push(x);
+        }
+        for (item of list) {
+            if (item in payments) {
+                income += payments[item];
+                //console.log(item)
+                //console.log(`Amount: ${income}`)
+            }
+        }
+        document.getElementById("reward").innerHTML = `UGX ${income}`;
+        localStorage.setItem("Income", income);
+    }
+    function viewClear() {
+        document.getElementById("clearPrompt").style.display = "flex"
+    }
+    function cancleClear() {
+        document.getElementById("clearPrompt").style.display = "none";
+    }
+
+    function query_2() {
+        //alert("query_2");
+        //queryContainer.style.display = "block";
+        headerContainer.style.display = "none";
+        finContainer.style.display = "none";
+        developerContainer.style.display = "none";
+        document.querySelector("#updateShiftContainer").style.display = "none";
+        document.querySelector("#updateShiftContainer").style.display = "none";
+        let queryContent = document.querySelector("#queryContent2");
+        let supervisors = document.querySelector("#supervisors");
+        let length = localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"];
+        let shiftNum = document.querySelector("#shiftNum");
+        let list = [];
+        for (let x = 1; x <= length; x++) {
+            list.push(x);
+            //list.push(list[-2] + 1);
+        }
+        list.push(Number(list[-1]) + 1)
+        //console.log(list);
+        //console.log(2 in list)
+        
+        if (shiftNum.value.toString() in list) {
+            //console.log(x);
+            let particular = localStorage.getItem(shiftNum.value);
+            particular = JSON.parse(particular);
+            console.log(shiftNum.value);
+            let department = particular["Department"];
+            let period = particular["Period"];
+            let date = particular["Date"];
+            //console.log(department)
+            let newElement_0 = document.createElement("p")
+            let newElement_1 = document.createElement("p");
+            let newElement_2 = document.createElement("p");
+            let newElement_3 = document.createElement("p");
+            newElement_0.textContent = shiftNum.value;
+            newElement_1.textContent = department;
+            newElement_2.textContent = period;
+            newElement_3.textContent = date;
+            queryContent.classList.add("newElements");
+            queryContent.appendChild(newElement_0);
+            queryContent.appendChild(newElement_1);
+            queryContent.appendChild(newElement_2);
+            queryContent.appendChild(newElement_3);
+            console.log(newElement_3.textContent);
+            supervisors.style.display = "flex";
+            document.querySelector("#queryTitleBar2").style.display = "grid";
+            document.querySelector("#complaintField2").style.display = "block";
+
+        } else if (shiftNum.value <= 0) {
+            alert("Value can not be 0 or below")
+        } else {
+            alert("Record not found!");
+            console.log(list[0]);
+            console.log(shiftNum.value)
+            headerContainer.style.display = "block";
+            finContainer.style.display = "block";
+            developerContainer.style.display = "block";
+            document.querySelector("#complaintContainer").style.display = "none";
+        }
+    }
+
+    const supervisorsDetail = {
+        "1": {
+            "Name": "Habib Doe",
+            "Phone": {
+                "MTN": "+256 761 090777",
+                "Airtel": "+256 702 472130"
+            },
+            "Email": "cruzreighnz@gmail.com",
+
+        },
+
+        "2": {
+            "Name": "Wilber Kukundakwe",
+            "Phone": {
+                "MTN": "0789915262",
+                "Airtel": "+256 759 544695"
+            },
+            "Email": "cruzreighnz@gmail.com",
+
+        }
+
+    }
+    function displayComplaint() {
+        //supervisors["1"]["Phone"]["Airtel"]
+        headerContainer.style.display = "none";
+        finContainer.style.display = "none";
+        document.querySelector("#newShiftContainer").style.display = "none";
+        document.querySelector("#updateShiftContainer").style.diaplay = "none";
+        developerContainer.style.display = "none";
+        document.querySelector("#complaintContainer").style.display = "block";
+    }
+
+    function contactDialog() {
+        const supervisors = document.querySelector("#supervisors");
+        supervisors.style.display = "none";
+        const myName = JSON.parse(localStorage.getItem("personalInfo"))["First name"] + " " + JSON.parse(localStorage.getItem("personalInfo"))["Last name"];
+        const shiftNum = document.querySelector("#shiftNum");
+        //console.log(myName);
+        let wa = document.querySelector("#wa");
+        let sms = document.querySelector("#sms");
+        let phone = document.querySelector("#phone");
+        let gm = document.querySelector("#gm");
+        document.querySelector("#Habib").onclick = function() {
+            try {
+                let missingShiftNo = shiftNum.value;
+                missingShift = localStorage.getItem(`${missingShiftNo}`);
+
+                //console.log(supervisors)
+                wa.href = `https://wa.me/${supervisorsDetail["1"]["Phone"]["MTN"]}?text=${myName}\n${missingShift}`;
+                sms.href = `sms:${supervisorsDetail["1"]["Phone"]["MTN"]}?&body=${myName}\n${missingShift}`;
+                phone.href = `tel:${supervisorsDetail["1"]["Phone"]["MTN"]}`;
+                gm.href = `mailto:${supervisorsDetail["1"]["Email"]}?body=${myName}$\n{missingShift}?subject=Complaint`;
+                document.querySelector("#complaintField3").style.display = "block";
+                console.log(wa.href)
+
+                //console.log(wa.href)
+            }catch(err) {
+                console.log(err)
+            }
+        }
+            document.querySelector("#Wilber").onclick = function() {
+                
+                //missingShiftNo = shiftNum.value;
+                //missingShift = localStorage.getItem(`${missingShiftNo}`);
+                console.log(shiftNum.value);
+                let missingShiftNo = shiftNum.value;
+                missingShift = localStorage.getItem(`${missingShiftNo}`);
+                //console.log(missingShift)
+                wa.href = `https://wa.me/${supervisorsDetail["2"]["Phone"]["Airtel"]}?text=${myName}\n${missingShift}`;
+                sms.href = `sms:${supervisorsDetail["2"]["Phone"]["MTN"]}?&body=${myName}\n${missingShift}`;
+                phone.href = `tel:${supervisorsDetail["2"]["Phone"]["MTN"]}`;
+                gm.href = `mailto:cruzreighnz@gmail.com?body=${myName}$\n{missingShift}?subject=Complaint`;
+                document.querySelector("#complaintField3").style.display = "block";
+                console.log("Display: block");
+                console.log(wa.href)
+            }
+
+            if (document.querySelector("#complaintField3".style.display === "block")) {
+                document.querySelector("#complaintField3").style.display = "none";
+                document.querySelector("#shiftNum").value = "";
+                document.querySelector("#complaintField2").style.display = "none";
+                document.querySelector(".complaintField33").style.display = "block";
+    }
+    }
+    contactDialog()
+
+    function closeComplaint() {
+        document.querySelector("#complaintContainer").style.display = "none";
+        headerContainer.style.display = "block";
+        finContainer.style.display = "block";
+        developerContainer.style.display = "block";
+        document.querySelector("#complaintField3").style.display = "none"
+    }
+    
+    
+    function closeMenu(){
+        //This function nolonger closes the menu once an item is clicked.
+        document.querySelector("#menu").addEventListener("click", e => {
+            menu.style.display = "none"
+        })
+    }
+    closeMenu()
+
+
+    function contactDev() {
+        //This function has been blocked by commenting the element that calls it in the menu because it prevents display of complaint icons once its called before.
+        const developerInfo = JSON.parse(localStorage.getItem("Developer info"));
+        document.querySelector("#wa").href = `https://wa.me/${developerInfo["WhatsApp"]}`;
+        document.querySelector("#phone").href = `https://tel:${developerInfo["Phone"]}`;
+        document.querySelector("#sms").href = `https://sms:${developerInfo["Phone"]}`;
+        document.querySelector("#gm").href = `https://mailto:${developerInfo["Email"]}`;
+        document.getElementById("developerContainer").appendChild(document.querySelector("#complaintField3"));
+
+    }
+    function settings() {
+        alert("This page is coming soon")
+    }
+    function local(){
+        localStorage.setItem("Other", JSON.stringify({"Storage length": localStorage.length
+        }))
+    }
+    //setTimeout(setInterval(local, 1000), 5000)
+</script>
