@@ -551,22 +551,22 @@
             <div id="menuContainer">
                 <img id="menuBtn" src="images (4).png" alt="" class="">
                 <div id="menu" class="menu">
-                    <p onclick="query()">
+                    <p onclick="query()" class="menu-item">
                         Query
                     </p>
-                    <p onclick="Update()">
+                    <p class="menu-item" onclick="Update()">
                         Update info
                     </p>
-                    <p onclick="viewClear()">
+                    <p class="menu-item" onclick="viewClear()">
                         Clear data
                     </p> <!--
-                    <p onclick="contactDev()">
+                    <p class="menu-item" onclick="contactDev()">
                         Contact developer
                     </p> -->
-                    <p onclick="displayComplaint()">
+                    <p class="menu-item" onclick="displayComplaint()">
                         Complaints
                     </p>
-                    <p onclick="settings()">
+                    <p class="menu-item" onclick="settings()">
                         Settings
                     </p>
                 </div>
@@ -798,16 +798,16 @@
             </p>
             <div id="compIcons">
                 <a href="" id="wa">
-                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/WhatsApp.svg.png" alt="Whatsapp">
+                    <img src="WhatsApp.svg.png" alt="Whatsapp">
                 </a>
                 <a href="" id="gm">
-                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/Gmail_icon_(2020).svg.png" alt="Gmail">
+                    <img src="Gmail_icon_(2020).svg.png" alt="Gmail">
                 </a>
                 <a href="" id="sms">
-                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/download.webp" alt="SMS">
+                    <img src="download.webp" alt="SMS">
                 </a>
                 <a href="" id="phone">
-                    <img src="/storage/F427-1173/Android/data/com.android.chrome/files/Download/phone-504.svg" alt="phone">
+                    <img src="phone-504.svg" alt="phone">
                 </a>
             </div>
         </div>
@@ -1516,7 +1516,7 @@ localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"
         document.querySelector("#complaintField3").style.display = "none"
     }
     
-    
+    /*
     function closeMenu(){
         //This function nolonger closes the menu once an item is clicked.
         document.querySelector("#menu").addEventListener("click", e => {
@@ -1524,6 +1524,17 @@ localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"
         })
     }
     closeMenu()
+    */
+    
+
+
+
+    // Use event delegation to handle clicks on menu items
+    menu.addEventListener('click', (event) => {
+        if (event.target.classList.contains('menu-item')) {
+            console.log(`Clicked on: ${event.target.textContent}`);
+            menu.style.display = 'none'; // Close the menu
+        })
 
 
     function contactDev() {
