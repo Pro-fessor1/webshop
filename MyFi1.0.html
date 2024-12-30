@@ -1530,6 +1530,7 @@ localStorage.length - JSON.parse(localStorage.getItem("Other"))["Storage length"
 
 
     // Use event delegation to handle clicks on menu items
+    let menu = document.querySelector("#menu");
     menu.addEventListener('click', (event) => {
         if (event.target.classList.contains('menu-item')) {
             console.log(`Clicked on: ${event.target.textContent}`);
